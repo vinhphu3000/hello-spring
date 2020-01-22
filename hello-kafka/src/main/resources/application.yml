@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        greetings-in:
+          consumer:
+            headerMode: embeddedHeaders
+          destination: greetings2
+          contentType: application/json
+        greetings-out:
+          producer:
+            headerMode: embeddedHeaders
+          destination: greetings2
+          contentType: application/json
