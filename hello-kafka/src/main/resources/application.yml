@@ -9,9 +9,9 @@ spring:
           consumer:
             headerMode: embeddedHeaders
           destination: greetings2
-          contentType: application/json
+          contentType: text/plain
         greetings-out:
           producer:
             headerMode: embeddedHeaders
           destination: greetings2
-          contentType: application/json
+          contentType: text/plain
