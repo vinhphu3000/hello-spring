@@ -14,4 +14,4 @@ spring:
           producer:
             headerMode: embeddedHeaders
           destination: greetings2
-          contentType: text/plain
+          contentType: application/*+avro
