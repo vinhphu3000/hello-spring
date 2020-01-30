@@ -24,26 +24,26 @@ public class GreetingsListener {
     // TESTED ABLE TO SEE THE MESSAGE AND THE HEADERS
     // AND SHOULD BE USED WITH sendByteArray(String topic, final Greetings greetings) IN THE SENDER
     // THIS IS USED WITH contentType: text/plain but not JSON, AVRO
-    public void handleGreetings(Message<Greetings> greetings)
-    {
-        log.info("Received message payload: " + greetings.getPayload());
-        log.info("Received greetings headers: {}", greetings
-                .getHeaders().entrySet()
-                .stream()
-                .map(entry -> entry.getKey() + " - " + entry.getValue())
-                .collect(Collectors.joining(", ")));
-    }
-
-//    public void handleGreetings(@Payload Greetings greetings, @Headers Map<String, Object> headers)
+//    public void handleGreetings(Message<Greetings> greetings)
 //    {
-//        log.info("Received greetings: {}.", greetings);
-////        headers.get(KafkaHeaders.RECEIVED_PARTITION_ID), headers.get(KafkaHeaders.OFFSET));
-//        log.info("Received greetings headers: {}", headers
-//                .entrySet()
+//        log.info("Received message payload: " + greetings.getPayload());
+//        log.info("Received greetings headers: {}", greetings
+//                .getHeaders().entrySet()
 //                .stream()
 //                .map(entry -> entry.getKey() + " - " + entry.getValue())
 //                .collect(Collectors.joining(", ")));
 //    }
+
+    public void handleGreetings(@Payload String greetings, @Headers Map<String, Object> headers)
+    {
+        log.info("Received greetings: {}.", greetings);
+//        headers.get(KafkaHeaders.RECEIVED_PARTITION_ID), headers.get(KafkaHeaders.OFFSET));
+        log.info("Received greetings headers: {}", headers
+                .entrySet()
+                .stream()
+                .map(entry -> entry.getKey() + " - " + entry.getValue())
+                .collect(Collectors.joining(", ")));
+    }
 
 
 

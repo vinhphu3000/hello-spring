@@ -36,24 +36,24 @@ public class GreetingsService {
 
     public void sendGreeting(final Greetings greetings)
     {
-        log.info("Sending greetings {}", greetings);
+//        log.info("Sending greetings {}", greetings);
 
         sendByteArray("greetings2", greetings);
 
 //        sendByMessageChannel(greetings);
     }
 
-//    private void sendByMessageChannel(final Greetings greetings)
-//    {
-//        Map<String, Object> headers = new HashMap<String, Object>();
-//
-//        headers.put("CustomHeader","CustomValue");
-//
-//        MessageHeaders messageHeaders = new MessageHeaders(headers);
-//
-//        MessageChannel messageChannel = greetingsStreams.outboundGreetings();
-//        messageChannel.send(MessageBuilder.createMessage(greetings, messageHeaders));
-//    }
+    private void sendByMessageChannel(final Greetings greetings)
+    {
+        Map<String, Object> headers = new HashMap<String, Object>();
+
+        headers.put("CustomHeader","CustomValue");
+
+        MessageHeaders messageHeaders = new MessageHeaders(headers);
+
+        MessageChannel messageChannel = greetingsStreams.outboundGreetings();
+        messageChannel.send(MessageBuilder.createMessage(greetings, messageHeaders));
+    }
 
     // TESTED, ABLE TO SEND BUT CANNOT SEE THE HEADERS IN THE LISTENER
 //    private void sendByMessageChannel(final Greetings greetings)
@@ -75,7 +75,7 @@ public class GreetingsService {
 //        MessageChannel messageChannel = greetingsStreams.outboundGreetings();
 //        messageChannel.send(MessageBuilder
 //                .withPayload(greetings)
-//                .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
+////                .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
 //                .setHeader("CustomHeader","CustomValue")
 //                .build());
 //    }
